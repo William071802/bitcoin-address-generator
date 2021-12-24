@@ -7,14 +7,15 @@ const base58 = require('bs58');
 let Bitcoin = {};
 
 // Generate the key and address
-Bitcoin.createWalletAddress = (callback) => {
+Bitcoin.createWalletAddress = () => {
     let privateKey = Bitcoin.createPrivateKey();
     let hash = Bitcoin.generatePublicKeyHash(privateKey);
     let address = Bitcoin.createPublicAddress(hash);
-    callback({
+    callback = {
         key: privateKey,
         address: address
-    });
+    };
+    return callback;
 }
 
 // Create the private key 
